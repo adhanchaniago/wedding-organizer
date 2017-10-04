@@ -6,8 +6,8 @@
 # https://github.com/sequelpro/sequelpro
 #
 # Host: 127.0.0.1 (MySQL 5.6.35)
-# Database: salonsusi
-# Generation Time: 2017-07-23 15:47:30 +0000
+# Database: weddingorganizer
+# Generation Time: 2017-10-04 10:46:06 +0000
 # ************************************************************
 
 
@@ -32,17 +32,8 @@ CREATE TABLE `dekorasi` (
   `harga_dekorasi` decimal(11,0) NOT NULL,
   `foto` varchar(255) NOT NULL,
   PRIMARY KEY (`dekorasi_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `dekorasi` WRITE;
-/*!40000 ALTER TABLE `dekorasi` DISABLE KEYS */;
-
-INSERT INTO `dekorasi` (`dekorasi_id`, `nama_dekorasi`, `deskripsi`, `harga_dekorasi`, `foto`)
-VALUES
-	(1,'Dekorasi 1','Yes',2000000,'bLLexhuDv1oAnwzUzpWZjg0D9xqH681NWwztjASD6.jpeg');
-
-/*!40000 ALTER TABLE `dekorasi` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Dump of table dokumentasi
@@ -56,17 +47,8 @@ CREATE TABLE `dokumentasi` (
   `deskripsi` varchar(255) NOT NULL,
   `harga_dokumentasi` decimal(11,0) NOT NULL,
   PRIMARY KEY (`dokumentasi_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `dokumentasi` WRITE;
-/*!40000 ALTER TABLE `dokumentasi` DISABLE KEYS */;
-
-INSERT INTO `dokumentasi` (`dokumentasi_id`, `nama_dokumentasi`, `deskripsi`, `harga_dokumentasi`)
-VALUES
-	(1,'Dokumentasi 1','Yes',2000000);
-
-/*!40000 ALTER TABLE `dokumentasi` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Dump of table gedung
@@ -81,17 +63,8 @@ CREATE TABLE `gedung` (
   `harga_gedung` decimal(11,0) NOT NULL,
   `foto` varchar(255) NOT NULL,
   KEY `gedung_id` (`gedung_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `gedung` WRITE;
-/*!40000 ALTER TABLE `gedung` DISABLE KEYS */;
-
-INSERT INTO `gedung` (`gedung_id`, `nama_gedung`, `deskripsi`, `harga_gedung`, `foto`)
-VALUES
-	(1,'Gedung 1','Yes',2000000,'6dn4QX4oHv8y0RyTv29kU6UVfR93LqtJ0otemLCx14.jpeg');
-
-/*!40000 ALTER TABLE `gedung` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Dump of table katering
@@ -106,17 +79,8 @@ CREATE TABLE `katering` (
   `jumlah` decimal(5,0) NOT NULL,
   `harga_katering` decimal(11,0) NOT NULL,
   PRIMARY KEY (`katering_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `katering` WRITE;
-/*!40000 ALTER TABLE `katering` DISABLE KEYS */;
-
-INSERT INTO `katering` (`katering_id`, `nama_katering`, `deskripsi`, `jumlah`, `harga_katering`)
-VALUES
-	(1,'Katering 1','Yes\r\n',500,2000000);
-
-/*!40000 ALTER TABLE `katering` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Dump of table konfirmasi
@@ -133,17 +97,8 @@ CREATE TABLE `konfirmasi` (
   `pemilik` varchar(25) DEFAULT NULL,
   `foto` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `konfirmasi` WRITE;
-/*!40000 ALTER TABLE `konfirmasi` DISABLE KEYS */;
-
-INSERT INTO `konfirmasi` (`id`, `pelanggan_id`, `pemesanan_id`, `no_rek`, `nama_bank`, `pemilik`, `foto`)
-VALUES
-	(1,2,201708032,'1231313131','cek kedemek','sentot','Screen_Shot_2017-07-20_at_9_25_43_PM1.png');
-
-/*!40000 ALTER TABLE `konfirmasi` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Dump of table migrations
@@ -155,15 +110,6 @@ CREATE TABLE `migrations` (
   `version` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `migrations` WRITE;
-/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-
-INSERT INTO `migrations` (`version`)
-VALUES
-	(20170624132119);
-
-/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Dump of table pelanggan
@@ -179,18 +125,8 @@ CREATE TABLE `pelanggan` (
   `email` varchar(255) NOT NULL,
   `password` varchar(11) NOT NULL DEFAULT '',
   PRIMARY KEY (`pelanggan_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `pelanggan` WRITE;
-/*!40000 ALTER TABLE `pelanggan` DISABLE KEYS */;
-
-INSERT INTO `pelanggan` (`pelanggan_id`, `nama`, `no_telp`, `alamat`, `email`, `password`)
-VALUES
-	(1,'widi','081298372737','kramat','widi@gmail.com','176'),
-	(2,'dicky','081512341234','kramat','dicky@gmail.com','582');
-
-/*!40000 ALTER TABLE `pelanggan` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Dump of table pemesanan
@@ -206,16 +142,6 @@ CREATE TABLE `pemesanan` (
   PRIMARY KEY (`id_pemesanan`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `pemesanan` WRITE;
-/*!40000 ALTER TABLE `pemesanan` DISABLE KEYS */;
-
-INSERT INTO `pemesanan` (`id_pemesanan`, `user_id`, `tgl_acara`, `status`)
-VALUES
-	('201708032',2,'2017-08-03','active'),
-	('201708101',1,'2017-08-10','pending');
-
-/*!40000 ALTER TABLE `pemesanan` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Dump of table pemesanan_dekorasi
@@ -228,18 +154,8 @@ CREATE TABLE `pemesanan_dekorasi` (
   `pemesanan_id` varchar(15) NOT NULL,
   `dekorasi_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `pemesanan_dekorasi` WRITE;
-/*!40000 ALTER TABLE `pemesanan_dekorasi` DISABLE KEYS */;
-
-INSERT INTO `pemesanan_dekorasi` (`id`, `pemesanan_id`, `dekorasi_id`)
-VALUES
-	(1,'201708101',1),
-	(2,'201708032',1);
-
-/*!40000 ALTER TABLE `pemesanan_dekorasi` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Dump of table pemesanan_dokumentasi
@@ -252,17 +168,8 @@ CREATE TABLE `pemesanan_dokumentasi` (
   `pemesanan_id` varchar(15) NOT NULL,
   `dokumentasi_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `pemesanan_dokumentasi` WRITE;
-/*!40000 ALTER TABLE `pemesanan_dokumentasi` DISABLE KEYS */;
-
-INSERT INTO `pemesanan_dokumentasi` (`id`, `pemesanan_id`, `dokumentasi_id`)
-VALUES
-	(1,'201708101',1);
-
-/*!40000 ALTER TABLE `pemesanan_dokumentasi` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Dump of table pemesanan_gedung
@@ -275,18 +182,8 @@ CREATE TABLE `pemesanan_gedung` (
   `pemesanan_id` varchar(15) NOT NULL,
   `gedung_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `pemesanan_gedung` WRITE;
-/*!40000 ALTER TABLE `pemesanan_gedung` DISABLE KEYS */;
-
-INSERT INTO `pemesanan_gedung` (`id`, `pemesanan_id`, `gedung_id`)
-VALUES
-	(1,'201708101',1),
-	(2,'201708032',1);
-
-/*!40000 ALTER TABLE `pemesanan_gedung` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Dump of table pemesanan_katering
@@ -299,17 +196,8 @@ CREATE TABLE `pemesanan_katering` (
   `pemesanan_id` varchar(15) NOT NULL,
   `katering_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `pemesanan_katering` WRITE;
-/*!40000 ALTER TABLE `pemesanan_katering` DISABLE KEYS */;
-
-INSERT INTO `pemesanan_katering` (`id`, `pemesanan_id`, `katering_id`)
-VALUES
-	(1,'201708101',1);
-
-/*!40000 ALTER TABLE `pemesanan_katering` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Dump of table pemesanan_rias
@@ -322,17 +210,8 @@ CREATE TABLE `pemesanan_rias` (
   `pemesanan_id` varchar(15) NOT NULL,
   `rias_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `pemesanan_rias` WRITE;
-/*!40000 ALTER TABLE `pemesanan_rias` DISABLE KEYS */;
-
-INSERT INTO `pemesanan_rias` (`id`, `pemesanan_id`, `rias_id`)
-VALUES
-	(1,'201708101',1);
-
-/*!40000 ALTER TABLE `pemesanan_rias` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Dump of table rias
@@ -347,17 +226,8 @@ CREATE TABLE `rias` (
   `deskripsi` varchar(255) NOT NULL,
   `harga_rias` decimal(11,0) NOT NULL,
   PRIMARY KEY (`rias_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `rias` WRITE;
-/*!40000 ALTER TABLE `rias` DISABLE KEYS */;
-
-INSERT INTO `rias` (`rias_id`, `nama_rias`, `gambar`, `deskripsi`, `harga_rias`)
-VALUES
-	(1,'Rias 1','profil_cewe5.png','Yes',2000000);
-
-/*!40000 ALTER TABLE `rias` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Dump of table users
@@ -373,14 +243,14 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 
 INSERT INTO `users` (`user_id`, `name`, `username`, `no_telp`, `password`)
 VALUES
-	(1,'Admin','admin','12345','21232f297a57a5a743894a0e4a801fc3');
+	(1,'admin','admin','','admin');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
