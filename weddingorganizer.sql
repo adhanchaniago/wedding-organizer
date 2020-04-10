@@ -1,265 +1,410 @@
-# ************************************************************
-# Sequel Pro SQL dump
-# Version 4541
-#
-# http://www.sequelpro.com/
-# https://github.com/sequelpro/sequelpro
-#
-# Host: 127.0.0.1 (MySQL 5.6.35)
-# Database: weddingorganizer
-# Generation Time: 2017-10-04 10:46:06 +0000
-# ************************************************************
+-- phpMyAdmin SQL Dump
+-- version 4.9.0.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Apr 10, 2020 at 05:03 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.1.31
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
+--
+-- Database: `weddingorganizer`
+--
 
-# Dump of table dekorasi
-# ------------------------------------------------------------
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `dekorasi`;
+--
+-- Table structure for table `dekorasi`
+--
 
 CREATE TABLE `dekorasi` (
-  `dekorasi_id` int(11) NOT NULL AUTO_INCREMENT,
+  `dekorasi_id` int(11) NOT NULL,
   `nama_dekorasi` varchar(15) NOT NULL,
   `deskripsi` varchar(255) NOT NULL,
   `harga_dekorasi` decimal(11,0) NOT NULL,
-  `foto` varchar(255) NOT NULL,
-  PRIMARY KEY (`dekorasi_id`)
+  `foto` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
-
-# Dump of table dokumentasi
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `dokumentasi`;
+--
+-- Table structure for table `dokumentasi`
+--
 
 CREATE TABLE `dokumentasi` (
-  `dokumentasi_id` int(11) NOT NULL AUTO_INCREMENT,
+  `dokumentasi_id` int(11) NOT NULL,
   `nama_dokumentasi` varchar(255) NOT NULL,
   `deskripsi` varchar(255) NOT NULL,
-  `harga_dokumentasi` decimal(11,0) NOT NULL,
-  PRIMARY KEY (`dokumentasi_id`)
+  `harga_dokumentasi` decimal(11,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
-
-# Dump of table gedung
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `gedung`;
+--
+-- Table structure for table `gedung`
+--
 
 CREATE TABLE `gedung` (
-  `gedung_id` int(5) unsigned NOT NULL AUTO_INCREMENT,
+  `gedung_id` int(5) UNSIGNED NOT NULL,
   `nama_gedung` varchar(35) NOT NULL,
   `deskripsi` varchar(255) NOT NULL,
   `harga_gedung` decimal(11,0) NOT NULL,
-  `foto` varchar(255) NOT NULL,
-  KEY `gedung_id` (`gedung_id`)
+  `foto` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
-
-# Dump of table katering
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `katering`;
+--
+-- Table structure for table `katering`
+--
 
 CREATE TABLE `katering` (
-  `katering_id` int(11) NOT NULL AUTO_INCREMENT,
+  `katering_id` int(11) NOT NULL,
   `nama_katering` varchar(25) NOT NULL,
   `deskripsi` varchar(255) NOT NULL,
   `jumlah` decimal(5,0) NOT NULL,
-  `harga_katering` decimal(11,0) NOT NULL,
-  PRIMARY KEY (`katering_id`)
+  `harga_katering` decimal(11,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
-
-# Dump of table konfirmasi
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `konfirmasi`;
+--
+-- Table structure for table `konfirmasi`
+--
 
 CREATE TABLE `konfirmasi` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) UNSIGNED NOT NULL,
   `pelanggan_id` int(11) DEFAULT NULL,
   `pemesanan_id` int(11) DEFAULT NULL,
   `no_rek` varchar(25) DEFAULT NULL,
   `nama_bank` varchar(25) DEFAULT NULL,
   `pemilik` varchar(25) DEFAULT NULL,
-  `foto` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `foto` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
-
-# Dump of table migrations
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `migrations`;
+--
+-- Table structure for table `migrations`
+--
 
 CREATE TABLE `migrations` (
   `version` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
-
-# Dump of table pelanggan
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `pelanggan`;
+--
+-- Table structure for table `pelanggan`
+--
 
 CREATE TABLE `pelanggan` (
-  `pelanggan_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pelanggan_id` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `no_telp` varchar(12) NOT NULL,
   `alamat` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(11) NOT NULL DEFAULT '',
-  PRIMARY KEY (`pelanggan_id`)
+  `password` varchar(11) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `pelanggan`
+--
 
+INSERT INTO `pelanggan` (`pelanggan_id`, `nama`, `no_telp`, `alamat`, `email`, `password`) VALUES
+(1, 'Mustapa Ahmad Kamal', '082237755772', 'banjarmasin', 'mustapakamalkml@gmail.com', '482');
 
-# Dump of table pemesanan
-# ------------------------------------------------------------
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `pemesanan`;
+--
+-- Table structure for table `pemesanan`
+--
 
 CREATE TABLE `pemesanan` (
   `id_pemesanan` varchar(15) NOT NULL,
-  `user_id` int(11) unsigned NOT NULL,
+  `user_id` int(11) UNSIGNED NOT NULL,
   `tgl_acara` varchar(10) NOT NULL,
-  `status` varchar(15) NOT NULL,
-  PRIMARY KEY (`id_pemesanan`)
+  `status` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
-
-# Dump of table pemesanan_dekorasi
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `pemesanan_dekorasi`;
+--
+-- Table structure for table `pemesanan_dekorasi`
+--
 
 CREATE TABLE `pemesanan_dekorasi` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `pemesanan_id` varchar(15) NOT NULL,
-  `dekorasi_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `dekorasi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
-
-# Dump of table pemesanan_dokumentasi
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `pemesanan_dokumentasi`;
+--
+-- Table structure for table `pemesanan_dokumentasi`
+--
 
 CREATE TABLE `pemesanan_dokumentasi` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `pemesanan_id` varchar(15) NOT NULL,
-  `dokumentasi_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `dokumentasi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
-
-# Dump of table pemesanan_gedung
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `pemesanan_gedung`;
+--
+-- Table structure for table `pemesanan_gedung`
+--
 
 CREATE TABLE `pemesanan_gedung` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `pemesanan_id` varchar(15) NOT NULL,
-  `gedung_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `gedung_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
-
-# Dump of table pemesanan_katering
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `pemesanan_katering`;
+--
+-- Table structure for table `pemesanan_katering`
+--
 
 CREATE TABLE `pemesanan_katering` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `pemesanan_id` varchar(15) NOT NULL,
-  `katering_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `katering_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
-
-# Dump of table pemesanan_rias
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `pemesanan_rias`;
+--
+-- Table structure for table `pemesanan_rias`
+--
 
 CREATE TABLE `pemesanan_rias` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `pemesanan_id` varchar(15) NOT NULL,
-  `rias_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `rias_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
-
-# Dump of table rias
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `rias`;
+--
+-- Table structure for table `rias`
+--
 
 CREATE TABLE `rias` (
-  `rias_id` int(11) NOT NULL AUTO_INCREMENT,
+  `rias_id` int(11) NOT NULL,
   `nama_rias` varchar(50) NOT NULL,
   `gambar` varchar(255) NOT NULL,
   `deskripsi` varchar(255) NOT NULL,
-  `harga_rias` decimal(11,0) NOT NULL,
-  PRIMARY KEY (`rias_id`)
+  `harga_rias` decimal(11,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
-
-# Dump of table users
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `users`;
+--
+-- Table structure for table `users`
+--
 
 CREATE TABLE `users` (
-  `user_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) UNSIGNED NOT NULL,
   `name` varchar(35) NOT NULL,
   `username` varchar(35) NOT NULL,
   `no_telp` varchar(12) DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
-  PRIMARY KEY (`user_id`),
-  UNIQUE KEY `username` (`username`)
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+--
+-- Dumping data for table `users`
+--
 
-INSERT INTO `users` (`user_id`, `name`, `username`, `no_telp`, `password`)
-VALUES
-	(1,'admin','admin','','admin');
+INSERT INTO `users` (`user_id`, `name`, `username`, `no_telp`, `password`) VALUES
+(1, 'admin', 'admin', '', '21232f297a57a5a743894a0e4a801fc3');
 
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
+--
+-- Indexes for dumped tables
+--
 
+--
+-- Indexes for table `dekorasi`
+--
+ALTER TABLE `dekorasi`
+  ADD PRIMARY KEY (`dekorasi_id`);
 
+--
+-- Indexes for table `dokumentasi`
+--
+ALTER TABLE `dokumentasi`
+  ADD PRIMARY KEY (`dokumentasi_id`);
 
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+--
+-- Indexes for table `gedung`
+--
+ALTER TABLE `gedung`
+  ADD KEY `gedung_id` (`gedung_id`);
+
+--
+-- Indexes for table `katering`
+--
+ALTER TABLE `katering`
+  ADD PRIMARY KEY (`katering_id`);
+
+--
+-- Indexes for table `konfirmasi`
+--
+ALTER TABLE `konfirmasi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pelanggan`
+--
+ALTER TABLE `pelanggan`
+  ADD PRIMARY KEY (`pelanggan_id`);
+
+--
+-- Indexes for table `pemesanan`
+--
+ALTER TABLE `pemesanan`
+  ADD PRIMARY KEY (`id_pemesanan`);
+
+--
+-- Indexes for table `pemesanan_dekorasi`
+--
+ALTER TABLE `pemesanan_dekorasi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pemesanan_dokumentasi`
+--
+ALTER TABLE `pemesanan_dokumentasi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pemesanan_gedung`
+--
+ALTER TABLE `pemesanan_gedung`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pemesanan_katering`
+--
+ALTER TABLE `pemesanan_katering`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pemesanan_rias`
+--
+ALTER TABLE `pemesanan_rias`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `rias`
+--
+ALTER TABLE `rias`
+  ADD PRIMARY KEY (`rias_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `dekorasi`
+--
+ALTER TABLE `dekorasi`
+  MODIFY `dekorasi_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `dokumentasi`
+--
+ALTER TABLE `dokumentasi`
+  MODIFY `dokumentasi_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `gedung`
+--
+ALTER TABLE `gedung`
+  MODIFY `gedung_id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `katering`
+--
+ALTER TABLE `katering`
+  MODIFY `katering_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `konfirmasi`
+--
+ALTER TABLE `konfirmasi`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pelanggan`
+--
+ALTER TABLE `pelanggan`
+  MODIFY `pelanggan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `pemesanan_dekorasi`
+--
+ALTER TABLE `pemesanan_dekorasi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pemesanan_dokumentasi`
+--
+ALTER TABLE `pemesanan_dokumentasi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pemesanan_gedung`
+--
+ALTER TABLE `pemesanan_gedung`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pemesanan_katering`
+--
+ALTER TABLE `pemesanan_katering`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pemesanan_rias`
+--
+ALTER TABLE `pemesanan_rias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `rias`
+--
+ALTER TABLE `rias`
+  MODIFY `rias_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
